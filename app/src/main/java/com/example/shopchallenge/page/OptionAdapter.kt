@@ -1,4 +1,4 @@
-package com.example.shopchallenge.home
+package com.example.shopchallenge.page
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,19 +6,18 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shopchallenge.R
-import com.example.shopchallenge.databinding.ItemCardBinding
-import com.example.shopchallenge.model.Product
-import com.example.shopchallenge.model.ProductWrapper
+import com.example.shopchallenge.databinding.DropdownBinding
+import com.example.shopchallenge.model.Option
 
-class ProductAdapter(private val items: List<ProductWrapper>, private val lifecycleOwner: LifecycleOwner) : RecyclerView.Adapter<MyViewHolder>() {
+class OptionAdapter(private val items: List<Option>, private val lifecycleOwner: LifecycleOwner) : RecyclerView.Adapter<MyViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): MyViewHolder {
-        val itemBinding = DataBindingUtil.inflate<ItemCardBinding>(
+        val itemBinding = DataBindingUtil.inflate<DropdownBinding>(
             LayoutInflater.from(parent.context),
-            R.layout.item_card,
+            R.layout.dropdown,
             parent,
             false
         )
@@ -26,18 +25,18 @@ class ProductAdapter(private val items: List<ProductWrapper>, private val lifecy
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val item: ProductWrapper = items[position]
+        val item: Option = items[position]
         holder.bind(item)
     }
 
     override fun getItemCount() = items.size
 }
 
-class MyViewHolder(private val binding: ItemCardBinding, private val lifecycleOwner: LifecycleOwner) : RecyclerView.ViewHolder(binding.getRoot()) {
+class MyViewHolder(private val binding: DropdownBinding, private val lifecycleOwner: LifecycleOwner) : RecyclerView.ViewHolder(binding.getRoot()) {
 
-    fun bind(item: ProductWrapper) {
+    fun bind(item: Option) {
         binding.lifecycleOwner = lifecycleOwner
-        binding.product = item
+        binding.option = item
         binding.executePendingBindings()
     }
 }

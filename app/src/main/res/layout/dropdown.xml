@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="option"
+            type="com.example.shopchallenge.model.Option" />
+    </data>
+    <Spinner
+        android:layout_width="100dp"
+        android:entries="@{option.values}"
+        android:padding="5dp"
+        android:selectedItemPosition="@={option.itemPosition}"
+        android:layout_height="wrap_content" />
+</layout>

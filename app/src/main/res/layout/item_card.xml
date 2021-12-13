@@ -5,11 +5,12 @@
     <data>
         <variable
             name="product"
-            type="com.example.shopchallenge.model.Product" />
+            type="com.example.shopchallenge.model.ProductWrapper" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout 
         android:layout_width="match_parent"
         android:padding="10dp"
+        android:onClick="@{ () -> product.triggerPageNav() }"
         android:layout_height="wrap_content">
 
         <TextView
@@ -19,7 +20,7 @@
             tools:text = "Item name"
             android:layout_width="wrap_content"
             android:textSize="24sp"
-            android:text="@{ product.title }"
+            android:text="@{ product.product.title }"
             android:layout_height="wrap_content" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

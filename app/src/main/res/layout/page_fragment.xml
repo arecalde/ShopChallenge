@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.shopchallenge.home.PageViewModelKt" />
+            type="com.example.shopchallenge.home.PageViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,36 +20,49 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="$123.45" />
-<!--        -->
-<!--        <ImageView-->
-<!--            android:layout_width="200dp"-->
-<!--            android:layout_height="200dp"-->
-<!--            android:id="@+id/productImage"-->
-<!--            tools:src="@mipmap/ic_launcher"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/price"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            android:contentDescription="@string/product_image" />-->
+            tools:text="$123.45"
+            android:text="@{viewModel.priceAsString }" />
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            tools:text="Name"-->
-<!--            android:layout_margin="5dp"-->
-<!--            android:id="@+id/name"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/productImage"-->
-<!--            android:textSize="24sp" />-->
+        <ImageView
+            imageUrl="@{viewModel.variant.image}"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:id="@+id/productImage"
+            tools:src="@mipmap/ic_launcher"
+            app:layout_constraintTop_toBottomOf="@id/price"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:contentDescription="@string/product_image" />
 
-<!--        <Button-->
-<!--            app:layout_constraintTop_toBottomOf="@id/name"-->
-<!--            android:text="@string/add_to_cart"-->
-<!--            android:layout_marginHorizontal="30dp"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content" />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Name"
+            android:layout_margin="5dp"
+            android:id="@+id/name"
+            android:text="@{ viewModel.product.title }"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/productImage"
+            android:textSize="24sp" />
 
+        <Button
+            app:layout_constraintTop_toBottomOf="@id/options"
+            android:text="@string/add_to_cart"
+            android:layout_marginHorizontal="30dp"
+            android:layout_width="match_parent"
+            android:id="@+id/buy"
+            android:onClick="@{() -> viewModel.buy()}"
+            android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="0dp"
+            android:id="@+id/options"
+            tools:listitem="@layout/dropdown"
+            app:layout_constraintTop_toBottomOf="@id/name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="wrap_content" />
     <!--    <Spinner-->
     <!--        app:layout_constraintTop_toBottomOf="@id/name"-->
     <!--        android:id="@+id/spinner"-->
