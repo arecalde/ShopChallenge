@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.shopchallenge.page.PageViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".page.PageFragment">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_margin="10dp"
+            android:id="@+id/price"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="$123.45" />
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:id="@+id/productImage"
+            tools:src="@mipmap/ic_launcher"
+            app:layout_constraintTop_toBottomOf="@id/price"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:contentDescription="@string/product_image" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Name"
+            android:layout_margin="5dp"
+            android:id="@+id/name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/productImage"
+            android:textSize="24sp" />
+
+        <Button
+            app:layout_constraintTop_toBottomOf="@id/name"
+            android:text="@string/add_to_cart"
+            android:layout_marginHorizontal="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    <!--    <Spinner-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/name"-->
+    <!--        android:id="@+id/spinner"-->
+    <!--        android:entries="@{viewmodel.items}"-->
+    <!--        android:padding="5dp"-->
+    <!--        android:selectedItemPosition="@={viewModel.itemPosition}"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content" />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
